@@ -1,0 +1,27 @@
+<ul class="pagination-custom">
+    {% if paginator.previous %}
+        <li><a href="{{ paginator.previous.url | escape }}" title="{{ paginator.previous.title | escape }}">&larr;</a></li>
+    {% else %}
+        <li class="disabled"><span>&larr;</span></li>
+    {% endif %}
+
+    {% for part in paginator.parts %}
+        {% if part.is_link %}
+            <li>
+                <a href="{{ part.url  | escape }}" title="">{{ part.title | escape }}</a>
+            </li>
+        {% else %}
+            {% if part.title == paginator.current_page %}
+                <li class="active"><span>{{ part.title | escape }}</span></li>
+            {% else %}
+                <li><span>{{ part.title | escape }}</span></li>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+    {% if paginator.next %}
+        <li><a href="{{ paginator.next.url | escape }}" title="{{ paginator.next.title | escape }}">&rarr;</a></li>
+    {% else %}
+        <li class="disabled"><span>&rarr;</span></li>
+    {% endif %}
+</ul>

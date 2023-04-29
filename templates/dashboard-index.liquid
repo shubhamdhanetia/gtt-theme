@@ -1,0 +1,6 @@
+{% assign dashboard = 'dashboard-' | append: current_user.user_type %}
+{{current_user.role.name}}
+
+{% assign roleNameToFind = "Analytics" %}
+
+{% include dashboard %}

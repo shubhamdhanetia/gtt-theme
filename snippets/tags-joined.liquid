@@ -1,0 +1,9 @@
+{% assign current_tags_joined = '' %}
+{% assign separator = ',' %}
+{% for current_tag in current_tags %}
+    {% unless forloop.first %}
+        {% assign current_tags_joined = current_tags_joined | append: separator %}
+    {% endunless %}
+    {% assign tag_label = current_tag.value %}
+    {% assign current_tags_joined = current_tags_joined | append: tag_label | escape %}
+{% endfor %}

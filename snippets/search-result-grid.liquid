@@ -1,0 +1,57 @@
+{% unless grid_item_width %}
+  {% assign grid_item_width = 'large--one-third medium--one-half' %}
+{% endunless %}
+
+
+{% unless current_collection %}
+  {% assign current_collection = collection %}
+{% endunless %}
+
+{% assign on_sale = false %}
+{% if item.compare_at_price.amount > item.price.actual_price.amount %}
+    {% assign on_sale = true %}
+{% endif %}
+
+{% assign unavailable = false %}
+{% assign sold_out = false %}
+
+{% if item.buyable and item.in_stock != true %}
+    {% assign sold_out = true %}
+{% endif %}
+
+{% if item.buyable != true  %}
+    {% assign unavailable = true %}
+{% endif %}
+
+{% assign image_size = settings.collection_prod_image_sizes %}
+
+<div class="grid-item search-result {{ grid_item_width }}{% if sold_out %} sold-out{% endif %}{% if on_sale %} on-sale{% endif %}">
+
+  <a href="{{ item.url | within: current_collection }}" class="product-grid-item">
+
+
+      <div class="product-grid-image">
+        <div class="product-grid-image--centered">
+          {% if sold_out %}
+            <div class="badge badge--sold-out"><span class="badge-label">{{ 'products.product.sold_out' | t }}</span></div>
+          {% endif %}
+          {% if item.featured_image %}
+            <img ng-src="{{ item.featured_image | img_url: "168x168" }}" fallback-src="{{ item.featured_image | img_url }}" alt="{{ item.featured_image.alt | escape }}">
+          {% else %}
+                    <div class="no-product-image">
+                        <img src="{{ 'images/no-image.svg' | asset_url }}" />
+                    </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <p>{{ item.title }}</p>
+
+      {% assign product = item %}
+      {% include 'product-price' %}
+
+  </a>
+
+</div>
+
+

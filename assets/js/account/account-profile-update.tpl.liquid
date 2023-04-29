@@ -1,0 +1,32 @@
+ <div class="one-half" ng-show="$ctrl.customer.isContact">
+    <h4>{{ 'customer.edit_profile.title' | t }}</h4>
+    <form ng-submit="$ctrl.submit()" name="detailForm">
+        <vc-labeled-input value="$ctrl.changeData.firstName" name="first_name" placeholder="{{ 'customer.edit_profile.first_name' | t }}" form="detailForm" required="true" autofocus="true"></vc-labeled-input>
+        <vc-labeled-input value="$ctrl.changeData.lastName" name="last_name" placeholder="{{ 'customer.edit_profile.last_name' | t }}" form="detailForm"></vc-labeled-input>
+        <vc-labeled-input value="$ctrl.changeData.email" name="email" placeholder="{{ 'customer.edit_profile.email' | t }}" form="detailForm" required="true" type="email"></vc-labeled-input>
+
+        <button class="vc-btn" ng-disabled="$ctrl.loader.isLoading" ng-class="{ 'btn--disabled': detailForm.$pristine, 'loading': $ctrl.loader.isLoading }">
+            <span class="btn-text">{{ 'customer.edit_profile.submit' | t }}</span>
+            <span class="btn-loading"></span>
+        </button>
+    </form> 
+    <form name="phone">
+    <vc-labeled-input name="PhoneNumber" placeholder="{{ 'contact.form.phone' | t }}" value="$ctrl.phoneNumber" ng-model="$ctrl.phoneNumber" ng-pattern="/^[+]?[0-9]?[(]?[0-9]{0,4}[)]?[0-9]{0,8}$/" ng-class="{'form-group error': phone.$invalid}"></vc-labeled-input>
+    <span ng-if="phone.$invalid"  ng-class="{'form-error': phone.$invalid}">Invalid phone number</span>
+    </form>        
+    <div>
+        <button class="vc-btn" ng-if="$ctrl.phoneNumber" ng-disabled="$ctrl.twoFactorEnabled" ng-click="$ctrl.updatePhoneNumber()">
+            <span class="btn-text">{{ 'customer.edit_profile.submit' | t }}</span>
+        </button>        
+        <button class="vc-btn" ng-if="$ctrl.phoneNumber" ng-disabled="$ctrl.twoFactorEnabled" ng-click="$ctrl.deletePhoneNumber()">
+            <span class="btn-text">{{ 'customer.edit_profile.delete' | t }}</span>
+        </button>
+    </div>
+    <br>
+    <label class="switch">
+        {% raw %}{{$ctrl.twoFactorEnabled ? "Two Factor Authentication: Enabled" : "Two Factor Authentication: Disabled" }}{% endraw %}                
+    </label>
+    <button class="vc-btn" name="TwoFactorEnabled" ng-model="$ctrl.twoFactorEnabled" ng-click="$ctrl.toggleTwoFactorAuth()">
+        <span class="btn-text">{% raw %}{{$ctrl.twoFactorEnabled ? "Disable" : "Enable" }}{% endraw %}</span>
+    </button>
+</div>

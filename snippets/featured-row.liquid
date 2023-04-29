@@ -1,0 +1,22 @@
+{% assign header_title = collections[featured_row].title %}
+{% assign more_link = collections[featured_row].url %}
+
+<div class="section-header">
+  {% if header_title %}
+    <p class="h1{% if more_link %} section-header--left{% endif %}">{{ header_title }}</p>
+  {% endif %}
+  {% if more_link %}
+    <div class="section-header--right">
+      {% assign header_title = header_title | downcase %}
+      <a href="{{ more_link }}">{{ 'homepage.featured_collection_rows.more_in_collection' | t: header_title }} &rsaquo;</a>
+    </div>
+  {% endif %}
+</div>
+
+<div class="grid-uniform row-negative-bottom">
+  {% for product in collections[featured_row].products limit: 5 %}
+    {% assign grid_item_width = 'large--one-fifth medium--one-third small--one-half' %}
+    {% assign current_collection = collections[featured_row] %}
+    {% include 'product-grid-item' %}
+  {% endfor %}
+</div>
