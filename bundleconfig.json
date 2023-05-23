@@ -18,11 +18,22 @@
             "assets/newtheme/vendor/jquery/jquery.min.js",
             "assets/newtheme/vendor/bootstrap/js/bootstrap.bundle.min.js",
             "assets/newtheme/vendor/jquery-easing/jquery.easing.min.js",
-            "assets/newtheme/js/sb-admin-2.min.js",
+            "assets/newtheme/js/sb-admin-2.min.js"
+        ]
+    },
+    {
+        "outputFileName": "assets/static/bundle/charts.js",
+        "inputFiles": [
             "assets/newtheme/vendor/chart.js/Chart.min.js",
             "assets/newtheme/js/demo/chart-area-demo.js",
             "assets/newtheme/js/demo/chart-pie-demo.js"
-
+        ]
+    },
+    {
+        "outputFileName": "assets/static/bundle/datatables.js",
+        "inputFiles": [
+            "assets/newtheme/vendor/datatables/jquery.dataTables.min.js",
+            "assets/newtheme/vendor/datatables/dataTables.bootstrap4.min.js"
         ]
     },
     {
@@ -66,7 +77,8 @@
         "outputFileName": "assets/static/bundle/newstyles.css",
         "inputFiles": [
             "assets/newtheme/vendor/fontawesome-free/css/all.css",
-            "assets/newtheme/css/sb-admin-2.css"
+            "assets/newtheme/css/sb-admin-2.css",
+            "assets/newtheme/vendor/datatables/dataTables.bootstrap4.min.css"
         ]
     },
     {
