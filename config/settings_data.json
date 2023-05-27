@@ -2,6 +2,10 @@
     "current": "Blue",
     "presets": {
         "Blue": {
+            "gtt_product_name":"Opticom USA",
+            "gtt_feature1_enabled": true,
+            "gtt_feature2_enabled": true,
+            "gtt_feature3_enabled": true,
             "suggestions_limit": 10,
             "bulk_order_enabled": true,
             "product_compare_enabled": true,

@@ -11,7 +11,7 @@
 
     <title>Opticom Cloud Portal</title>
 
-    {{ 'bundle/newstyles.css' | static_asset_url | append_version | stylesheet_tag }}
+    {{ 'sb-admin-2.scss.css' | asset_url | stylesheet_tag }}
     
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -81,16 +81,9 @@
 
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    {{ 'bundle/newscripts.js' | static_asset_url | append_version | script_tag }}
 
 </body>
+
 
 </html>
