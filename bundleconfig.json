@@ -79,7 +79,6 @@
         "outputFileName": "assets/static/bundle/newstyles.css",
         "inputFiles": [
             "assets/newtheme/vendor/fontawesome-free/css/all.css",
-            "assets/newtheme/css/sb-admin-2.css",
             "assets/newtheme/vendor/datatables/dataTables.bootstrap4.min.css"
         ]
     },
